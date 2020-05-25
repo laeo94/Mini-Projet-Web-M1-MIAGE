@@ -1,0 +1,72 @@
+Nom Prénom : ONG Léa
+Groupe : M1-Groupe2-PW
+
+Toutes les questions pour le travail individuel ont été traitées (jusqu'au point 9).
+Les autres questions de la partie binôme ont été aussi traitées (jusqu'au point 11).
+Les solutions sont traitées par rapport au cahier des charges demandé.
+
+1. Etude du code html du document mini-projet-js-2020.html(renommé index.html):
+
+Dans le header : 
+-L'élément Titre : Le titre de la page.
+-L'élément meta : les métadonnées de la page telles que l'encodage et l'auteur de la page.
+-L'élément link : intégrant la feuille de style par le lien "style/style-projet2020.css"
+-Les éléments scripts : intégrant deux script exécutables de "data/films.js" et "scripts/project2020.js"
+
+Dans le body :
+- Un titre avec la balise h1
+- Un block div d'id "selection" avec :
+	- un titre
+	- deux div d'id "select1" et "select2"
+- Un bloc div d'id "catalog" avec :
+	- deux éléments input de type text et checkbox
+	- deux div d'id "films" et "détails"
+
+2. Etude du code html mini-projet-js-2020-static.html:
+
+On remarque que dans la partie #films l'élément film est répété plusieurs fois mais avec un id qui diffère "i-film" avec i le numéro du film.
+On peut alors penser à utiliser une boucle for afin d'afficher des div film dans #films
+
+3. La fonction createFilm() a été traitée.
+Cependant afin que tous les films soient initialisés correctement lors du chargement de la page pour cela :
+- J'ai dû déplacer la balise <script src="scripts/project2020.js"></script> après le fin de la balise <body> afin que le chargement des films se fasse.
+
+4. Deux nouveaux filmx ont été ajoutés dans le tableau filmData :
+Les films "Souvenirs de Marnie" et "Le château ambulant" avec leur image et description.
+
+5. et 6. 
+
+Afin de traiter ces questions j'ai créé une fonction filterFilms() filtrant les films en comparant la valeur de #filter.
+Le fitrage ne se faisait pas avec les caractères majuscules j'ai donc utilisé toLowerCase afin que la comparaison fonctionne.
+Pour que la fonction soit active à chaque événement keyup :
+- J'ai ajouté cette fonction à l'événement keyup de l'élément #filter par la méthode addEventListener("keyup",filterFilms).
+
+Concernant l'affichage de la zone #détail selon que la case #showDetails soit cochée ou non :
+-J'ai créé une fonction showDetails() et tout comme le fitrage, j'ai ajouté cette fonction sur l'événement click de #showDetails
+
+7. et 8. J'ai ajouté pour chaque div.film:
+- L'événement mouseover avec une fonction affichant la description du film sur #details lorsque la souris se situe dans le div.film.
+- L'événement mouseout avec une fonction cachant la description du films sur #details lorsque la souris ne se situe pas sur le div.film.
+
+9. J'ai ajouté un événement click sur chaque div.film pour mettre/enlever le film dans un emplacement de favoris #select1 ou #select2
+ Dans le cas contraire afficher un message alert.
+(Pour traiter la question 10 j'ai modifié les variables favoris1 et favoris2 afin de connaitre le(s) film(s) en favoris et de ne pas les cachés lors que les films sont filtrés)
+
+10. Pour traiter cette question :
+-J'ai ajouté un block div d'id "genre" dans la page index.html avec :
+	- un titre h3 
+	- un div d'id "genres"
+-Ajouté le style de ce block sur la style-projet2020.css
+-Ajouté dans le script films.js:
+	- un champ genre dans chacune des données de la variable globale filmData
+	- une variable globale genre de type clé valeur ayant pour clé le nom du genre et comme valeur le nombre de films initialisée à 0.
+
+Comme pour la question 3 sur la creation des films, j'ai créé une fonction createGenre(nom,genre)
+permettant de créer l'élément DOM div.genre pour chaque genre de la variable globale genre et qu'il soit returner sur le div #genres.
+
+Pour régler le problème de filtrage de films par genre et d'éviter qu'un film en favoris n'ayant pas ce genre soit caché mais toujours en favoris (cf question 9)
+
+11. J'ai ajouté dans la page index.html un input d'id #filterGenre dans le div #genre
+ Puis sur le même principe que la question 5 et 6 
+j'ai créé une fonction filterGenres() filtrant les genres à chaque événement keyup sur #filterGenre.
+
